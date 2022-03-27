@@ -23,21 +23,21 @@ const obj = {
 
 app.get("/", (req, res) => {
   res.render("index", {
-    title: "weather app",
+    title: "Weather App",
     name: "Joe",
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
-    title: "About me",
+    title: "About Me",
     name: "Joe",
   });
 });
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    title: "help page",
+    title: "Help Page",
     name: "Joe",
   });
 });
