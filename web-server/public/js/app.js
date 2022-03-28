@@ -12,7 +12,7 @@ weatherForm.addEventListener('submit', (e) => {
 async function getData(value) {
   try {
     messageOne.textContent = 'loading...'
-    const res = await fetch(`http://localhost:3000/weather?address=${value}`);
+    const res = await fetch(`/weather?address=${value}`);
     const data = await res.json()
     const text = `It currently feels like ${data.res.feelslike} and the temperature is ${data.res.temperature} degrees`
     messageOne.textContent = data.place
