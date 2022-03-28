@@ -9,8 +9,7 @@ const weather = (latitude, longitude, callback) => {
       console.log("Error is present", undefined);
     } else {
       const data = res.body.current;
-      const { temperature, feelslike } = data;
-      callback(undefined, { temperature, feelslike });
+      callback(undefined, data);
     }
   });
 };

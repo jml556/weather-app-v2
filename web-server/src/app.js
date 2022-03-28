@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const geoCode = require('../../utils/geocode')
+const weather = require('../../utils/weather')
 
 const app = express();
 
@@ -43,8 +45,18 @@ app.get("/help", (req, res) => {
 });
 
 //json response - send back object
-app.get("/weather", (req, res) => {
-  res.send(obj);
+app.get("/weather", (req, response) => {
+  const address = req.query.address
+  geoCode(address, (err, res) => {
+    const place = (res.other[0].place_name)
+    const {latitude, longitude} = res
+    weather(latitude, longitude, (err, res) => {
+      response.send({
+        res,
+        place
+      })
+    })
+  })
 });
 
 app.get('/help/*', (req, res) => {
@@ -54,7 +66,7 @@ app.get('/help/*', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.rednder('notfound', {
+  res.render('notfound', {
     text: "Help article could not be found"
   })
 });
