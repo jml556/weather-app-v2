@@ -2,9 +2,9 @@
   "name": "weather-app",
   "version": "1.0.0",
   "description": "",
-  "main": "/",
+  "main": "app.js",
   "scripts": {
-    "start": "node /src/app.js"
+    "start": "node web-server/src/app.js"
   },
   "author": "",
   "license": "ISC",
